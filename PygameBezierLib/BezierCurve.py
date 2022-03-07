@@ -1,10 +1,12 @@
 from .Handle import Handle, LerpHandle
 
+from typing import List, Tuple
+
 class DegreeToLow(Exception):
     pass
 
 class BezierCurve:
-    def __init__(self, degree, colour_arr=None, control_pos_arr=None):
+    def __init__(self, degree: int, colour_arr: Tuple[tuple] = None, control_pos_arr: List[Handle]=None):
         if colour_arr is None:
             colour_arr = ((120, 120, 120),
                          (255, 0, 0),
@@ -42,7 +44,7 @@ class BezierCurve:
 
                 self.LerpHandles[i] += [LerpHandle(higher_handles[0], higher_handles[1], colour)]
 
-    def GetPointAt(self, progress):
+    def GetPointAt(self, progress: int) -> Tuple[int, int]:
         for degree in self.LerpHandles:
             for lerp_handle in degree:
                 lerp_handle.progress = progress
@@ -50,7 +52,7 @@ class BezierCurve:
 
         return self.LerpHandles[-1][0].pos
 
-    def GetFullCurve(self, resolution):
+    def GetFullCurve(self, resolution: int)-> List[Tuple[int, int]]:
         increment = 1/resolution
 
         progress = 0

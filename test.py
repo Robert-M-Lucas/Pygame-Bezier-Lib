@@ -6,12 +6,11 @@ screen = pygame.display.set_mode(screen_size)
 
 clock = pygame.time.Clock()
 
-bezier = BezierCurve(5)
+bezier = BezierCurve(3)
 bezier.ControlHandles[0].pos = (100, 100)
 bezier.ControlHandles[1].pos = (100, 500)
 bezier.ControlHandles[2].pos = (500, 100)
-bezier.ControlHandles[3].pos = (500, 500)
-bezier.ControlHandles[4].pos = (750, 500)
+
 
 held_handle = None
 
